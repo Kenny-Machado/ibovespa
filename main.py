@@ -11,8 +11,12 @@ import time
 
 while True:
     
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-gpu')
+    
     # Starting Google Chrome Session
-    driver = webdriver.Chrome('C:\\Users\\kenny\\Desktop\\ChromeDriver New\\chromedriver.exe')
+    driver = webdriver.Chrome(chrome_options=chrome_options)#'/home/ubuntu/ibovespa/chromedriver.exe')
     
     # Go to Google Search
     driver.get('https://www.google.com')
@@ -24,7 +28,7 @@ while True:
     # Get updated price
     price = driver. find_element_by_css_selector("span[class='IsqQVc NprOob XcVN5d wT3VGc']").text
     print('The price updated is R$ ',price)
-    time.sleep(15)
+    time.sleep(5)
     
     # Close the Browser
     driver.close()
